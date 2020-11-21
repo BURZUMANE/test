@@ -1,0 +1,19 @@
+<app-modal
+  *ngIf="showModal"
+  [currentLargeImage]="currentLargeImage"
+  (unShowModal)=unShowModal()
+></app-modal>
+<div
+  class="container-fluid"
+  infiniteScroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+>
+  <ul class="wrapper fit" #imageList>
+    <li *ngFor="let picture of picturesArray" (click)="openModal(picture.id)">
+      <img [src]="picture?.cropped_picture" alt="A Toyota Previa">
+    </li>
+  </ul>
+
+</div>

@@ -1,0 +1,37 @@
+<div
+  id="myModal"
+  class="modal container-fluid d-flex justify-content-center align-items-center"
+  (click)="closeModal($event)">
+  <span class="closebutton" (click)="closeModal($event)">×</span>
+  <div *ngIf="isLoading; else image" class="lds-circle">
+    <div></div>
+  </div>
+  <ng-template #image>
+    <div class="w-90 img-wrapper">
+      <img
+        #image
+        style="transform-origin:0 0;"
+        [style.transform]="'scale('+scale+')'"
+        [src]="currentLargeImage?.full_picture" class="modal-content img-wrapper__image" id="placeholder"
+        [alt]="currentLargeImage?.author">
+      <div class="img-wrapper__caption">
+        <div class="img-wrapper__caption-text">
+          <h3>{{currentLargeImage?.author}}</h3>
+          <h4>{{currentLargeImage?.camera}}</h4>
+          <h4>{{currentLargeImage?.tags}}</h4>
+        </div>
+      </div>
+
+      <div class="img-wrapper__copied" *ngIf="showCopied">
+        <p>URL Copied 😁</p>
+      </div>
+
+      <div class="img-wrapper__controls">
+        <i class="fas fa-minus" (click)="zoom('out')"></i>
+        <i class="fas fa-plus" (click)="zoom('in')"></i>
+        <i class="far fa-copy icon"  (click)="copyLink(currentLargeImage?.full_picture)"></i>
+      </div>
+
+    </div>
+  </ng-template>
+</div>

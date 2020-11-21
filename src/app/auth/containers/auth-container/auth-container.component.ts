@@ -15,8 +15,8 @@ export class AuthContainerComponent implements OnInit {
   getToken(): void {
     this.authService.getToken().subscribe((resp: any) => {
       localStorage.setItem('auth', JSON.stringify(resp));
+      this.router.navigate(['gallery']);
     });
-    this.router.navigate(['gallery']);
   }
 
   ngOnInit(): any {

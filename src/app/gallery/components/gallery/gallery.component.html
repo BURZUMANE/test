@@ -11,7 +11,7 @@
   (scrolled)="onScroll()"
 >
   <ul class="wrapper fit" #imageList>
-    <li *ngFor="let picture of picturesArray" (click)="openModal(picture.id)">
+    <li *ngFor="let picture of picsArray" (click)="openModal(picture.id)">
       <img [src]="picture?.cropped_picture" alt="A Toyota Previa">
     </li>
   </ul>

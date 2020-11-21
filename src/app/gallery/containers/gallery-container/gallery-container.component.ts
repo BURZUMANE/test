@@ -34,6 +34,7 @@ export class GalleryContainerComponent implements OnInit {
     this.galleryService.getImages(this.currentPage).subscribe(data => {
       this.picturesArray = data.pictures;
     });
+    this.loadMore();
   }
 
 }

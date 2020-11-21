@@ -11,6 +11,7 @@ export class GalleryComponent implements OnInit, OnChanges {
   @Output() loadMore = new EventEmitter();
 
   public showModal = false;
+  public picsArray = [];
 
   @Input() picturesArray: any;
   @Input() currentLargeImage: any;
@@ -34,7 +35,9 @@ export class GalleryComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): any {
     const { picturesArray } = changes;
-    console.log(this.picturesArray);
+    if (picturesArray.currentValue) {
+      this.picsArray = [...this.picsArray, ...picturesArray.currentValue];
+    }
   }
 
 
